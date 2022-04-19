@@ -1,0 +1,20 @@
+[0] Config.pm:307> INFO - This is Biber 2.17
+[0] Config.pm:310> INFO - Logfile is 'main.blg'
+[291] biber-MSWIN64:340> INFO - === 
+[429] Biber.pm:418> INFO - Reading 'main.bcf'
+[729] Biber.pm:972> INFO - Found 21 citekeys in bib section 0
+[763] Biber.pm:4383> INFO - Processing section 0
+[788] Biber.pm:4574> INFO - Looking for bibtex file 'thesis.bib' for section 0
+[906] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1052] bibtex.pm:1518> INFO - Found BibTeX data source 'thesis.bib'
+[2132] UCollate.pm:68> INFO - Overriding locale 'ru-RU' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2133] UCollate.pm:68> INFO - Overriding locale 'ru-RU' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2133] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'ru-RU'
+[2133] Biber.pm:4209> INFO - No sort tailoring available for locale 'ru-RU'
+[2203] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[2875] bbl.pm:757> INFO - Output to main.bbl
+[2875] Biber.pm:130> WARN - legacy month field 'Sep' in entry 'Buchmüller:984122' is not an integer - this will probably not sort properly.
+[2875] Biber.pm:130> WARN - legacy month field 'Apr' in entry 'PhysRevLett.126.141801' is not an integer - this will probably not sort properly.
+[2875] Biber.pm:130> WARN - legacy month field 'Aug' in entry 'PhysRevD.98.030001' is not an integer - this will probably not sort properly.
+[2875] Biber.pm:130> WARN - legacy month field 'oct' in entry 'Bergstr_m_2009' is not an integer - this will probably not sort properly.
+[2876] Biber.pm:132> INFO - WARNINGS: 4

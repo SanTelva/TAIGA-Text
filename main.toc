@@ -1,0 +1,9 @@
+\babel@toc {russian}{}\relax 
+\contentsline {chapter}{Введение}{2}{section*.1}%
+\contentsline {chapter}{\numberline {1}Теоретическое введение}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Стандартная Модель физики частиц}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Малые массы нейтрино}{3}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Темная материя}{3}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Постановка проблемы оптимизации}{3}{section.1.2}%
+\contentsline {chapter}{Выводы}{4}{section*.2}%
+\contentsline {chapter}{Литература}{4}{section*.3}%
