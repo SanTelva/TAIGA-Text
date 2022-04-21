@@ -115,6 +115,7 @@
 
 \IfFileExists{pscyr.sty}{\RequirePackage{pscyr}}{
 \RequirePackage{fontspec}
+\usepackage{ dsfont }
 \setmainfont{Times New Roman}}		% проверка, установлен ли в системе pscyr (очень рекомендуется!), если нет, то 
 %\renewcommand{\rmdefault}{cmr}				% установка начертания типа Times New Roman или очень похожего
 \DeclareSymbolFont{operators}{OT1}{\rmdefault}{m}{n}
