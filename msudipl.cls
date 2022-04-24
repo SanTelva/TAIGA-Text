@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{msudipl}[2021/11/16 MSU diploma class, v. 0.2.1]
+\ProvidesClass{msudipl}[2022/02/25 MSU diploma class, v. 0.2.2]
 
 %%	ОПИЦИИ КЛАССА msudipl
 %%
@@ -24,8 +24,8 @@
 %%	Язык указывается в записях в bib-файле в поле langid в каждой записи.
 %%
 %%
-%%
 %%	ТИТУЛЬНЫЙ ЛИСТ
+%%
 %%	название факультета, можно использовать \par или \\ для красоты
 %%	\facname{футурологический факультет}
 %%	чтобы убрать название факультета с титульного листа использовать опцию класса nofac (исчезнет также и название кафедры)
@@ -49,6 +49,7 @@
 %%	Титульный лист продуцируется стандартной командой \maketitle
 %%
 
+\newif\ifhangingpunctuation
 \newif\ifmatheavy
 \newif\ifbacw
 \newif\ifmagd
@@ -69,6 +70,7 @@
 \DeclareOption{footnoteref}{\litsortfalse\PassOptionsToPackage{citestyle=gost-footnote-min,bibstyle=gost-footnote,backend=biber,natbib=true,sorting=none,autolang=other}{biblatex}}
 \DeclareOption{inlineref}{\litsorttrue\PassOptionsToPackage{citestyle=gost-inline-min,bibstyle=gost-inline,backend=biber,natbib=true,sorting=nyt,autolang=other}{biblatex}}
 \DeclareOption{harvard}{\litsorttrue\PassOptionsToPackage{style=authoryear-icomp,backend=biber,natbib=true,sorting=nyt,autolang=other}{biblatex}}
+\DeclareOption{hpunct}{\hangingpunctuationtrue}
 
 \DeclareOption*{
 	\PackageWarning{msudipl}{Unknown option ‘\CurrentOption’}%
@@ -105,7 +107,7 @@
 	\RequirePackage{amsthm}				% пакет для работы с теоремами и леммами
 	\RequirePackage{amssymb} 			% большое количество специфических математических символов
 \fi
-
+\usepackage{ dsfont }
 \everymath{\displaystyle}				% отключаем масштабирование символов в многоэтажных дробях, индексах и пределах интегралов в соответствии с традицией русской типографской вёрстки
 \DeclareMathSizes{14}{14}{10}{10}    			% увеличенные размеры символов в формулах (синтаксис {елси не векторный шрифт}{основной текст}{верхний индекс}{нижний индекс})
 
@@ -113,14 +115,24 @@
 \RequirePackage[utf8]{inputenc}				% прямым текстом указываем, в какой кодировке работаем (UTF8), применение других кодировок (cp1251 или koi8r) вполне допустимо, но не рекомендуемо (cp866 можно, но зачем?)
 \RequirePackage[english,russian]{babel}			% указываем, что пользоваться будем русским языком, подгружающая словари переносов, выставляются в соответствии с принятыми нормами отступы, интервалы между словами и пр., а иногда и английским.
 
-\IfFileExists{pscyr.sty}{\RequirePackage{pscyr}}{
-\RequirePackage{fontspec}
-\usepackage{ dsfont }
-\setmainfont{Times New Roman}}		% проверка, установлен ли в системе pscyr (очень рекомендуется!), если нет, то 
-%\renewcommand{\rmdefault}{cmr}				% установка начертания типа Times New Roman или очень похожего
+% включание шрифтов
+\IfFileExists{./font/TimesNewRoman-Regular.otf}{
+	\RequirePackage{fontspec}
+	\setmainfont{TimesNewRoman}[Path=./font/,Extension = .otf,UprightFont=*-Regular,BoldFont=*-Bold,ItalicFont=*-Italic,BoldItalicFont=*-Bold-Italic]
+}
+{
+	\IfFileExists{pscyr.sty}{
+		\RequirePackage{pscyr}
+		\renewcommand{\rmdefault}{ftm}
+	}
+	{
+	\RequirePackage{fontspec}
+	\setmainfont{Times New Roman}
+	}
+}		
+
 \DeclareSymbolFont{operators}{OT1}{\rmdefault}{m}{n}
 \SetSymbolFont{operators}{normal}{OT1}{\rmdefault}{x}{n}	% переключаем шрифт начертания операторов и цифр (они в душе тоже операторы) на ту же нарнитуру, что и основной текст
-
 
 \RequirePackage{indentfirst}				% заставляет ТеХ делать отступ в первом абзаце главы/параграфа/раздела
 \setlength{\parindent}{1.25cm}				% настройка отступов
@@ -137,6 +149,7 @@
 \newcommand{\sectitlesize}{\fontsize{16}{24pt}\selectfont}
 \newcommand{\chaptersize}{\fontsize{18}{27pt}\selectfont}
 
+
 \RequirePackage{appendix} %управление стилями загловков в приложениях
 
 %% ОФОРМЛЕНИЕ ТЕКСТА
@@ -151,8 +164,35 @@
 
 \counterwithin*{footnote}{page}				% сброс нумерации сносок на каждой странице, требования такие
 
+\ifhangingpunctuation
+% реализация висячей пунктуации, соответствующей традиции русской типографской вёрстки, работает не со всеми шрифтами! Раскомментировать для красоты, работоспособность не гарантируется.
+	\RequirePackage[activate={true,nocompatibility}]{microtype}
+	\SetProtrusion
+	{
+		encoding = TU,
+		family = \rmdefault   % тут указываем тот шрифт, который непосредственно используется. по-умолчанию это faq, но мы выше, после вызова pscyr, выбрали этот шрифт
+	}
+	{
+		« = {1000,   },         % формат команды простой (если вам зачем-то понадобится ещё): _символ_ = {_снос влево в промиле от ширины символа, когда символ стоит в начале строки_ . снос вправо, когда символ стоит в конце строки_ }
+		» = {  , 1000},
+		„ = {1000,   },
+		“ = {  , 1000},
+		( = {1000,   },
+		) = {  , 1000},
+		! = {  , 1000},
+		? = {  , 1000},
+		: = {  , 1000},
+		; = {  , 1000},
+		. = {  , 1000},
+		- = {  , 500},
+		{,}= {  , 1000}
+	}
+	\DeclareMicrotypeSet{t2atext}{encoding=TU}
+	\UseMicrotypeSet{t2atext}
+\fi
+
 %% ОФОРМЛЕНИЕ ОГЛАВЛЕНИЯ
-\setcounter{tocdepth}{1}				% Оглавлении будут только главы и параграфы, но не будет мелких заголовков. Для дипломов нормально, для диссертаций стоит поднять до 2.
+\setcounter{tocdepth}{2}				% Оглавлении будут только главы и параграфы, но не будет мелких заголовков. Для дипломов нормально, для диссертаций стоит поднять до 2.
 
 %% Для корректного оформления иллюстраций, чтобы каждый раз не вызывать \afterpage{\clearpage}
 \RequirePackage{afterpage}

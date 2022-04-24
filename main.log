@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.21)  18 APR 2022 18:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.21)  23 APR 2022 18:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,9 +6,9 @@ entering extended mode
 (main.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-02-05> (msudipl.cls
-Document Class: msudipl 2021/11/16 MSU diploma class, v. 0.2.1
+Document Class: msudipl 2022/02/25 MSU diploma class, v. 0.2.2
 
-Package msudipl Warning: Unknown option ‘floatypics’ on input line 76.
+Package msudipl Warning: Unknown option ‘floatypics’ on input line 78.
 
 (/usr/local/share/miktex-texmf/tex/latex/base/report.cls
 Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
@@ -112,6 +112,9 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \mathdisplay@stack=\toks22
 LaTeX Info: Redefining \[ on input line 2938.
 LaTeX Info: Redefining \] on input line 2939.
+)
+(/home/alex/.miktex/texmfs/install/tex/latex/doublestroke/dsfont.sty
+Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
 )
 (/usr/local/share/miktex-texmf/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
@@ -296,6 +299,4 @@ File: t2aenc.dfu 2021/06/21 v1.2n UTF-8 support
    defining Unicode char U+04F5 (decimal 1269)
    defining Unicode char U+04F8 (decimal 1272)
    defining Unicode char U+04F9 (decimal 1273)
-   defining Unicode char U+200C (decimal 8204)
-   defining Unicode char U+2013 (decimal 8211)
-   defining Unicode char U+2014 (decimal 8212)
+   defining
